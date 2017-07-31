@@ -1,0 +1,31 @@
+{
+  "name": "fp-code",
+  "version": "1.0.0",
+  "description": "my functional programing code resp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sunyongjian/FP-Code.git"
+  },
+  "keywords": [
+    "javascript",
+    "functional"
+  ],
+  "author": "sunyongjian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sunyongjian/FP-Code/issues"
+  },
+  "homepage": "https://github.com/sunyongjian/FP-Code#readme",
+  "dependencies": {
+    "eslint-config-airbnb": "^15.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.3.0",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-plugin-import": "^2.7.0"
+  }
+}
