@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/sunyongjian/FP-Code#readme",
   "dependencies": {
-    "eslint-config-airbnb": "^15.1.0"
+    "eslint-config-airbnb": "^15.1.0",
+    "immutable": "^3.8.1"
   },
   "devDependencies": {
     "eslint": "^4.3.0",
