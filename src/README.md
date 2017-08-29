@@ -27,11 +27,11 @@
 > 函数式编程的几个特点
 
 ### 函数是“一等公民”
-[first-class](https://github.com/sunyongjian/FP-Code/tree/master/src/feature/firstClass.js)
+[first-class](https://github.com/sunyongjian/FP-Code/blob/master/src/feature/firstClass.md)
 
 ### 没有副作用
 side effect，指的是函数在运行过程中，对外部的数据造成了影响，产生了函数本身运算之外的其他影响，这个就是副作用。具体参照
-[pureFunction](https://github.com/sunyongjian/FP-Code/tree/master/src/feature/pureFunction.js)
+[pureFunction](https://github.com/sunyongjian/FP-Code/blob/master/src/feature/pureFunction.js)
 
 ### 只用表达式
 "表达式"（expression）是一个单纯的运算过程，总是有返回值；"语句"（statement）是执行某种操作，没有返回值。函数式编程要求，只使用表达式，不使用语句。也就是说，每一步都是单纯的运算，而且都有返回值。[引用](http://www.ruanyifeng.com/blog/2012/04/functional_programming.html)
@@ -42,7 +42,7 @@ side effect，指的是函数在运行过程中，对外部的数据造成了影
 ## 衍生
 > 暂且我还没有理好结构，我不知道把高阶函数，柯理化，函数组合，functor因子，偏函数应用等概念放到那。暂且归于衍生。
 ### 高阶函数
-- [reduce](https://github.com/sunyongjian/FP-Code/tree/master/src/highOrderFunction/reduce.js)
+- [reduce](https://github.com/sunyongjian/FP-Code/blob/master/src/highOrderFunction/reduce.js)
 
 ### 柯理化（curring）
 
