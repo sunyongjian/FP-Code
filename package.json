@@ -4,7 +4,7 @@
   "description": "my functional programing code resp",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register"
   },
   "repository": {
     "type": "git",
@@ -14,6 +14,18 @@
     "javascript",
     "functional"
   ],
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  },
   "author": "sunyongjian",
   "license": "ISC",
   "bugs": {
@@ -21,8 +33,12 @@
   },
   "homepage": "https://github.com/sunyongjian/FP-Code#readme",
   "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "chai": "^4.1.2",
     "eslint-config-airbnb": "^15.1.0",
-    "immutable": "^3.8.1"
+    "immutable": "^3.8.1",
+    "mocha": "^3.5.0"
   },
   "devDependencies": {
     "eslint": "^4.3.0",

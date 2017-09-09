@@ -37,7 +37,7 @@ const y1 = triple(2);
 
 // 与之对应的就是 Side Effects， 产生副作用的函数
 
-var y2;
+export var y2;
 
 function tripleEffect(x) {
   y2 = x * 3;
@@ -86,7 +86,18 @@ console.log(loudly(upper(sayHi(personName))));
 // 从函数体就可以看出 sayHi 的作用可能是什么，并且它的参数是一个 name，返回值也会在最后return
 // 3.可测试性
 // 随意一个函数，只要给定输入，就会得到输出。我们的测试会更容易写。
+// 测试代码在 test/pure.test.js 
+// 比如 triple 和 tripleEffect，triple 是纯函数，给一个输入得到一个输出，测试很容易。但是 tripleEffect 
+// 的变量依赖于当前的作用域，写测试的时候有局限性，几乎没有单元测试可言。非要测也有办法...
 // 4.合理性
 // 如果我们写的函数，执行结果可以被一段代码代替，并且不改变程序最后的结果，那这段代码就是引用透明的。
 // 以上我们的 sayHi 可以完全替换成某个字符串... 因为函数式是数学推导的过程，中间的任一等式都可被
 // 一对一的等价替换。
+
+export {
+  triple,
+  tripleEffect,
+  sayHi,
+  upper,
+  loudly,
+};
