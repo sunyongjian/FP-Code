@@ -41,9 +41,9 @@ side effect，指的是函数在运行过程中，对外部的数据造成了影
 
 ## 衍生
 > 暂且我还没有理好结构，我不知道把高阶函数，柯理化，函数组合，functor因子，偏函数应用等概念放到那。暂且归于衍生。
-### 高阶函数
+### 高阶函数 ([HOF](https://github.com/sunyongjian/FP-Code/tree/master/src/highOrderFunction))
 - [reduce](https://github.com/sunyongjian/FP-Code/blob/master/src/highOrderFunction/reduce.js)
 
-### 柯理化（curring）
+### 柯理化（[curring](https://github.com/sunyongjian/FP-Code/tree/master/src/curry)）
 
 ### 函数组合（compose）
