@@ -24,7 +24,41 @@ console.log(curryAdd(1)(2));
 const add10 = curryAdd(10);
 const result = add10(2);
 ```
-通过给 curryAdd 传入 10，我们得到了一个加 10 的函数，返回的函数，通过闭包，记住了 curryAdd 的参数，也就是说之后如果我们有同样的加 10 的操作，就不需要在执行两次 curryAdd 了，只需要执行 add10。当代码很多的时候，这种减少执行步骤的操作还是有必要的。那么，当其他场景需要柯理化的时候，一次次的定义这样的函数确实有点繁琐，能不能有一个通用的函数 currying 去处理需要柯理化的函数呢。
+通过给 curryAdd 传入 10，我们得到了一个加 10 的函数，返回的函数，通过闭包，记住了 curryAdd 的参数，也就是说之后如果我们有同样的加 10 的操作，就不需要在执行两次 curryAdd 了，只需要执行 add10。当代码很多的时候，这种减少执行步骤的操作还是有必要的。
+
+### 左右柯理化
+柯理化把参数拆解了，上面的 curryAdd 是从左往右处理的，也就是从第一个参数开始，就是左柯理化。如果从右开始，就是右柯理化。如：
+```javascript
+// x + y => y, x
+const rightCurryAdd = function(y) {
+  return function(x) {
+    return y + x;
+  }
+}
+const tenAdd = rightCurryAdd(10);
+const result1 = tenAdd(2);
+```
+我们可以看到，返回的函数意义已经变了，是 10 去加某个数，不过加法是支持交换律的，所以最后的结果是相同的。如果是除法呢：
+```javascript
+// div => division
+const leftCurryDiv(x) {
+  return function(y) {
+    return x/y;
+  }
+}
+const tendiv = leftCurryDiv(10);
+
+const rightCurryDiv(y) {
+  return funtion(x) {
+    return x/y;
+  }
+}
+const divTen = rightCurryDiv(10);
+```
+两个函数的意义不一样，一个是做除数，一个是被除数了。不过方向其实并不重要，选择怎么处理看个人的喜好，只是两种方式会有区别。另外，手动的，一次次的定义这些 curry 函数，实在是有点繁琐，我们不能用一次定义一次吧。所以就需要自动去柯理化参数的函数。
+
+
+### 自动柯理化参数
 
 ### 自动柯理化
 ```javascript
