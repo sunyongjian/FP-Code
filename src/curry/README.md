@@ -60,7 +60,6 @@ const divTen = rightCurryDiv(10);
 
 ### 自动柯理化参数
 
-### 自动柯理化
 ```javascript
 function currying(fn) {
   var args = [].slice.call(arguments, 1);
