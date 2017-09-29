@@ -81,3 +81,21 @@ var addAry = mapAry(addOne);
 ```
 
 我这里并没加校验，多个函数同时操作的情况，需要一种类似于管道的操作 compose，后面再讲。
+### 用函数去封装
+也是抽象的一种。我们平常接触的面向对象，封装是它的重要思想，但是在 JS 中，可以通过函数去封装。
+```javascript
+function list() {
+  var args = Array.prototype.slice.call(arguments, 1);
+
+  var add = function(x) {
+    args.push(x);
+  }
+  
+  var getByIndex = function(index) {
+    return args[index];
+  }
+
+  return args;
+}
+```
+### 以函数为行为单元
