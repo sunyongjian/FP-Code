@@ -5,6 +5,7 @@ High Order Functions，即高阶函数，至少满足其下两个条件之一：
 
 这都是在满足函数是 "first-class" 的情况下，出现的技巧。
 
+
 ```javascript
 function HOF(...){
   return function(...){
