@@ -53,6 +53,9 @@ side effect，指的是函数在运行过程中，对外部的数据造成了影
 ### 引用透明
 产生副作用的对立就是纯函数。当我们的程式都应用纯函数，那我们这段程式就是引用透明的。因为我们可以把程式中的任何一段函数代码，替换成它所得到的结果。如果用一句话来说：如果程式中的一段代码可以替换成它执行后的结果，而且程式的结果不会有影响，那我们就说对这段代码的引用是透明的。
 
+## 抽象
+[把问题抽象](https://github.com/sunyongjian/FP-Code/tree/master/src/introduction)
+
 ## 衍生
 > 暂且我还没有理好结构，我不知道把高阶函数，柯理化，函数组合，functor因子，偏函数应用等概念放到那。暂且归于衍生。
 ### 高阶函数 ([HOF](https://github.com/sunyongjian/FP-Code/tree/master/src/highOrderFunction))
