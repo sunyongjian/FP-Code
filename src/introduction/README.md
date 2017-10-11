@@ -125,4 +125,6 @@ JS 中使用函数去封装，主要是利用了闭包，把变量和方法有�
 ### 以函数为行为单元
 其实上面的栗子中，“翻倍”，add，getByIndex 这都是行为单元，是把某些“行为”操作，包装成了函数。
 
+[比较器](https://github.com/sunyongjian/FP-Code/blob/master/src/introduction/index.js)
+
 ### 数据抽象

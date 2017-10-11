@@ -2,6 +2,7 @@ const ary = [-1, -5, -33, -22, -1, 0, 2, 3, 22];
 console.log(ary.sort());
 // [ -1, -1, -22, -33, -5, 0, 2, 22, 3 ]
 // ary.sort，当 sort 中不传入比较器的时候，默认是按照字符编码的顺序排序，即第一个数字的顺序。
+// 当然这是有问题的。
 
 // 升序
 const compare = (x, y) => {
@@ -9,22 +10,24 @@ const compare = (x, y) => {
   if (x < y) return -1;
   return 0;
 };
-
+// 比较器抽象成函数
 console.log(ary.sort(compare));
 
 // [ -33, -22, -5, -1, -1, 0, 2, 3, 22 ]
 
 // but，这个 compare 函数不通用于比较，比如
 if (compare(1, 1)) {
-  console.log('equal');
+  console.log('equal');// no log
 }
 
+// 把 等于或小于的比较 抽象成函数
 const thanOrEqual = (x, y) => x >= y;
 
 if (thanOrEqual(1, 1)) {
-  console.log('thanOrEqual');
+  console.log('thanOrEqual'); // thanOrEqual
 }
 
+// 改装成 sort 需要的比较器。
 const compartor = behavior => (x, y) => {
   if (behavior(x, y)) return 1;
   return -1;
@@ -32,3 +35,5 @@ const compartor = behavior => (x, y) => {
 
 console.log(ary.sort(compartor(thanOrEqual)));
 //  [ -33, -22, -5, -1, -1, 0, 2, 3, 22 ]
+
+// 当然你也可以改成降序的
