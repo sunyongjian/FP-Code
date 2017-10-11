@@ -27,7 +27,8 @@ if (thanOrEqual(1, 1)) {
   console.log('thanOrEqual'); // thanOrEqual
 }
 
-// 改装成 sort 需要的比较器。
+// 改装成 sort 需要的比较器。它接收一个行为函数，返回 sort 所需的比较器函数，然后可以通过传入不同的 behavior，实现不同的比较器
+
 const compartor = behavior => (x, y) => {
   if (behavior(x, y)) return 1;
   return -1;
@@ -37,3 +38,9 @@ console.log(ary.sort(compartor(thanOrEqual)));
 //  [ -33, -22, -5, -1, -1, 0, 2, 3, 22 ]
 
 // 当然你也可以改成降序的
+
+const lessOrEqual = (x, y) => x <= y;
+
+console.log(ary.sort(compartor(lessOrEqual)));
+//  [22, 3, 2, 0, -1, -1, -5, -22, -33]
+
