@@ -44,3 +44,5 @@ const lessOrEqual = (x, y) => x <= y;
 console.log(ary.sort(compartor(lessOrEqual)));
 //  [22, 3, 2, 0, -1, -1, -5, -22, -33]
 
+// thanOrEqual, lessOrEqual ... 等等的通用比较函数，不适用于 array.sort，通过中间函数 compartor 
+// 把 return true/false 的结果，映射成为 1/-1/0，这样就可以被 sort 消费了。
