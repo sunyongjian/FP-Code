@@ -33,6 +33,7 @@ double.reverse();
 function triple(x) {
   return x * 3;
 }
+
 const y1 = triple(2);
 
 // 与之对应的就是 Side Effects， 产生副作用的函数
