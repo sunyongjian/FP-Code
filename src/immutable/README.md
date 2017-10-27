@@ -107,6 +107,8 @@ x.b.c = 22;
 console.log(y); // { a: 1, b: { c: 2 } }
 ```
 
+而更深层次的，就需要更复杂的操作了。通常实现 deep-clone 的库：lodash，$.extend()... 目前最好用的是 `immutable.js`。
+
 
 ### 数据持久化
 
