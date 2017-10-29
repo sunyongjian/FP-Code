@@ -95,6 +95,8 @@ console.log(y); // [1, 2, [33, 4]]
 同样是浅拷贝。
 
 #### deep-clone
+- 原生
+
 拿上面的栗子来说，我们去实现深拷贝。
 ```js
 const x = { a: 1, b: { c: 2 } };
@@ -107,7 +109,63 @@ x.b.c = 22;
 console.log(y); // { a: 1, b: { c: 2 } }
 ```
 
-而更深层次的，就需要更复杂的操作了。通常实现 deep-clone 的库：lodash，$.extend()... 目前最好用的是 `immutable.js`。
+不过这只是嵌套不多的时候，而更深层次的，就需要更复杂的操作了。实际上，deep-clone 确实没有一个统一的方法，需要考虑的地方挺多，比如效率，以及是否应用场景（是否每次都需要 deep-clone）。还有在 js 中，还要加上 hasOwnProperty 这样的判断。写个简单的方法：
+```js
+function clone(obj) {
+  // 类型判断。 isActiveClone 用来防止重复 clone，效率问题。
+  if (obj === null || typeof obj !== 'object' || 'isActiveClone' in obj) {
+    return obj;
+  }
+
+  //可能是 Date 对象
+  const result = obj instanceof Date ? new Date(obj) : {};
+
+  for (const key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      obj['isActiveClone'] = null;
+      result[key] = clone(obj[key]);
+      delete obj['isActiveClone'];
+    }
+  }
+
+  return result;
+}
+
+var x = {
+  a: 1,
+  b: 2,
+  c: {
+    d: 3
+  }
+}
+console.log(clone(x));
+```
+
+- JSON
+最简单，偷懒的一种方式，JSON 的序列化再反序列化。
+```js
+const y = JSON.parse(JSON.stringify(x));
+```
+普通的 string，number，object，array 都是可以做深拷贝的。不过这个方法比较偷懒，是存在坑的，比如不支持 NaN，正则，function 等。举个栗子：
+```js
+const x = {
+  a: function() {
+    console.log('aaa')
+  },
+  b: NaN,
+}
+
+const y = JSON.parse(JSON.stringify(x));
+console.log(y.b);
+y.a()
+
+```
+试一下就知道了。
+
+- Library
+通常实现 deep-clone 的库：`lodash`，`$.extend(true, )`... 目前最好用的是 `immutable.js`。
+
+
 
 
 ### 数据持久化
@@ -115,7 +173,3 @@ console.log(y); // { a: 1, b: { c: 2 } }
 不变性可以让数据持久化变得容易。当数据不可变的时候，我们的每次操作，都不会引起初始数据的改变。也就是说在一定时期内，这些数据是永久存在的，而你可以通过读取，实现类似于“回退/切换快照”般的操作。这是我们从函数式编程来简单理解这个概念，而不涉及硬盘存储或者数据库存储的概念。
 
 首先，无论数据结构的深浅，每次操作都对整个数据结构进行完整的深拷贝，效率会很低。这就牵扯到在做数据拷贝的时候，利用数据结构，做一些优化。例如，我们可以观察某次操作，到底有没有引起深层次数据结构的变化，如果没有，我们是不是可以只做部分改变，而没变化的地方，还是可以共用的。**这就是部分持久化**。
-
-### 序列化
-
-数据交换和传输
