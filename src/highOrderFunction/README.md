@@ -3,7 +3,7 @@ High Order Functions，即高阶函数，至少满足其下两个条件之一：
 - 以一个函数作为参数
 - 以一个函数作为返回结果
 
-这都是在满足函数是 "first-class" 的情况下，出现的技巧。
+这都是在满足函数是 "first-class" 的情况下，出现的技巧。函数可以作为程序的参数，也可以作为返回值。
 
 
 ```javascript
@@ -16,6 +16,68 @@ function HOF(...){
 
 ### 函数作为参数
 比如操作数组的 map，reduce 函数，都是此类。
+```js
+const x = [1, 2, 3];
+const y = x.map(function(item) {
+  return item + 1;
+})
+```
 
+[reduce](https://github.com/sunyongjian/FP-Code/blob/master/src/highOrderFunction/reduce.js)
 
 ### 函数作为返回值
+```js
+const add = function(x) {
+  return function(y) {
+    return x + y;
+  }
+}
+console.log(add(1)(2));
+```
+
+#### 偏函数应用
+通过一个典型的栗子来介绍。比如用 `Object.prototype.toString` 来判断数据类型。
+```js
+
+const isType = function (type) {
+  return function(obj) {
+    if(typeof type !== 'string') {
+      return new Error('type need string');
+    }
+    const str = type[0].toUpperCase() + type.slice(1);
+    return Object.prototype.toString.call(obj) === `[object ${str}]`;
+  }
+}
+
+const isNumber = isType('number');
+console.log(isNumber(1));
+```
+
+isType 返回一个新的函数。不过这种情况也叫偏函数，即把函数的某些参数值固定住，返回一个新的函数，调用这个新函数会更简单。
+
+#### 节流函数
+一个在 js 中广泛应用的函数。
+-
+```js
+const throttle = wait => fn => {
+var timer;
+return (...args) => {
+  if (!timer) {
+    timer = setTimeout(() => timer = null, wait);
+    return fn(...args);
+  }
+}
+}
+```
+
+```js
+const debounce = wait => fn => {
+  var timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn(...args);
+    }, wait)
+  }
+}
+```
