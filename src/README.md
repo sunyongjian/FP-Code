@@ -63,7 +63,7 @@ side effect，指的是函数在运行过程中，对外部的数据造成了影
 
 ### 柯理化（[curring](https://github.com/sunyongjian/FP-Code/tree/master/src/curry)）
 
-### 函数组合（compose）
+### 函数组合（[compose](https://github.com/sunyongjian/FP-Code/tree/master/src/compose)）
 
 
 ### 不可变数据（[immutable data](https://github.com/sunyongjian/FP-Code/tree/master/src/immutable)）
