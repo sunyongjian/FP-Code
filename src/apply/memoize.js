@@ -13,22 +13,22 @@ const capitalized = (str) => str.slice(0, 1).toUpperCase() + str.slice(1, str.le
 
 const memoCap = memoize(capitalized);
 
-console.time('capitalized');
-console.log(memoCap('sunyongjian'));
-console.timeEnd('capitalized');
+// console.time('capitalized');
+// console.log(memoCap('sunyongjian'));
+// console.timeEnd('capitalized');
 
 
-console.time('capitalized');
-console.log(memoCap('sunyongjian'));
-console.timeEnd('capitalized');
+// console.time('capitalized');
+// console.log(memoCap('sunyongjian'));
+// console.timeEnd('capitalized');
 
-console.time('capitalized');
-console.log(memoCap('sunyongjian'));
-console.timeEnd('capitalized');
+// console.time('capitalized');
+// console.log(memoCap('sunyongjian'));
+// console.timeEnd('capitalized');
 
-console.time('capitalized');
-console.log(memoCap('sunyongjian'));
-console.timeEnd('capitalized');
+// console.time('capitalized');
+// console.log(memoCap('sunyongjian'));
+// console.timeEnd('capitalized');
 
 // 第一次大写的处理可能需要 几毫米，有了缓存后，之后几乎是 0.025ms，节省很多的性能。
 
@@ -39,13 +39,46 @@ let fibonacci = (n) => {
   return n < 2 ? n : fibonacci(n - 1) + fibonacci(n - 2);
 };
 
-console.time('fibonacci');
-console.log(fibonacci(30));
-console.timeEnd('fibonacci');// 15.8ms
+// console.time('fibonacci');
+// console.log(fibonacci(30));
+// console.timeEnd('fibonacci');// 15.8ms
 
-// 重写 fibonacci，为了递归调用。
-fibonacci = memoize(fibonacci);
+// // 重写 fibonacci，为了递归调用。
+// fibonacci = memoize(fibonacci);
 
-console.time('memoizeFib');
-console.log(fibonacci(30));
-console.timeEnd('memoizeFib');// 0.145ms
+// console.time('memoizeFib');
+// console.log(fibonacci(30));
+// console.timeEnd('memoizeFib');// 0.145ms
+
+// 多个参数
+
+function memoize2(f) {
+  const cache = {};
+  return (...args) => {
+    const key = args.join(',');
+    if (!cache[key]) {
+      cache[key] = f(...args);
+    }
+    return cache[key];// 这里是执行函数和缓存其计算值
+  };
+}
+
+const add = (a, b) => a + b;
+
+const memoAdd = memoize2(add);
+
+console.time('add');
+console.log(memoAdd(2, 4));
+console.timeEnd('add');
+
+console.time('add');
+console.log(memoAdd(2, 4));
+console.timeEnd('add');
+
+console.time('add');
+console.log(memoAdd(2, 4));
+console.timeEnd('add');
+
+console.time('add');
+console.log(memoAdd(2, 4));
+console.timeEnd('add');
