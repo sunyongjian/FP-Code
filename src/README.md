@@ -67,3 +67,8 @@ side effect，指的是函数在运行过程中，对外部的数据造成了影
 
 
 ### 不可变数据（[immutable data](https://github.com/sunyongjian/FP-Code/tree/master/src/immutable)）
+
+
+## 应用
+
+### 缓存函数（[Memoization](https://github.com/sunyongjian/FP-Code/blob/master/src/apply/memoize.js)）
