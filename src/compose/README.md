@@ -15,4 +15,32 @@ var compose = function(f, g) {
 };
 ```
 
-### 
+```js
+const upperCase = str => str.toUpperCase();
+
+const reverse = str => str.split('').reverse().join('');
+
+// 比如现在要做一个字符串大写并倒叙的工作，通常是
+var str = 'hello';
+var upperStr = upperCase(str);
+var reverseStr = reverse(upperStr);
+
+// 那如果改成 compose，两个函数组合后返回新的函数。
+var upperAndReverse = compose(reverse, upperCase);
+var result = upperAndReverse(str);
+```
+
+
+### compose 满足分配率
+
+### 更通用的 compose 函数
+
+```js
+
+varcompose = function(funcs) {
+  return function(params) {
+    
+  }
+}
+
+```
